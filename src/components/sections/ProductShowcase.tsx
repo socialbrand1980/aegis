@@ -319,7 +319,7 @@ function SectionCta() {
   const { t } = useLanguage();
 
   return (
-    <div className="mt-10 rounded-xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur-xl md:p-6">
+    <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur-xl md:mt-8 md:p-6">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">{t("product.sectionCtaTitle")}</p>
       <p className="mt-2 text-slate-200">{t("product.sectionCtaDesc")}</p>
       <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap sm:justify-center">
@@ -336,7 +336,7 @@ export function ProductShowcase() {
 
   return (
     <div className="overflow-x-clip">
-      <section className="section-spacing pt-20">
+      <section className="pt-16 pb-10 md:pt-20 md:pb-14">
         <Container className="max-w-7xl">
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
             <div>
@@ -355,7 +355,7 @@ export function ProductShowcase() {
         </Container>
       </section>
 
-      <section className="section-spacing pt-0">
+      <section className="pt-0 pb-12 md:pb-16">
         <Container className="max-w-7xl">
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {c.featureCards.map((card, index) => (
@@ -378,7 +378,7 @@ export function ProductShowcase() {
         </Container>
       </section>
 
-      <section className="section-spacing pt-2">
+      <section className="pt-4 pb-12 md:pt-6 md:pb-16">
         <Container className="max-w-7xl">
           <div className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl md:p-8">
             <h2 className="text-2xl font-semibold text-white sm:text-3xl md:text-4xl">{t("product.salesOsTitle")}</h2>
@@ -401,7 +401,7 @@ export function ProductShowcase() {
         </Container>
       </section>
 
-      <section className="section-spacing pt-2">
+      <section className="pt-0 pb-12 md:pb-16">
         <Container className="max-w-7xl">
           <div className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl md:p-10">
             <h2 className="text-2xl font-semibold text-white sm:text-3xl md:text-4xl">{t("product.controlTitle")}</h2>
