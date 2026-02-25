@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { SiteMotionLayer } from "@/components/ui/SiteMotionLayer";
 import "@/styles/globals.css";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
@@ -23,10 +24,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={jakarta.className}>
         <AppProviders>
-          <ScrollProgress />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <SiteMotionLayer />
+          <div className="relative z-10">
+            <ScrollProgress />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </div>
         </AppProviders>
       </body>
     </html>

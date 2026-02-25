@@ -43,11 +43,11 @@ a {
 
 @layer utilities {
   .glass {
-    @apply border border-white/20 bg-white/[0.07] backdrop-blur-xl rounded-3xl shadow-glass;
+    @apply border border-white/20 bg-white/[0.07] backdrop-blur-xl rounded-3xl shadow-glass transition-[transform,border-color,background-color,box-shadow] duration-300;
   }
 
   .surface {
-    @apply border border-white/10 bg-white/[0.04] rounded-2xl;
+    @apply border border-white/10 bg-white/[0.04] rounded-2xl transition-[transform,border-color,background-color] duration-300;
   }
 
   .section-spacing {
@@ -97,5 +97,48 @@ a {
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .hero-neural-bg {
+    @apply pointer-events-none absolute inset-0 z-0;
+  }
+
+  .hero-neural-canvas {
+    @apply block h-full w-full;
+    opacity: 0.68;
+    mix-blend-mode: screen;
+  }
+
+  .site-motion-layer {
+    @apply pointer-events-none fixed inset-0 z-0 overflow-hidden;
+  }
+
+  .site-motion-canvas {
+    @apply block h-full w-full;
+    opacity: 0.44;
+    mix-blend-mode: screen;
+  }
+
+  .site-motion-vignette {
+    @apply absolute inset-0;
+    background:
+      radial-gradient(1200px circle at 12% 8%, rgba(34, 82, 186, 0.15), transparent 46%),
+      radial-gradient(900px circle at 88% 18%, rgba(47, 109, 228, 0.11), transparent 42%),
+      radial-gradient(900px circle at 50% 100%, rgba(20, 56, 140, 0.18), transparent 55%);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .glass:hover {
+    transform: translateY(-2px);
+    border-color: rgba(186, 220, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 14px 32px -22px rgba(76, 142, 255, 0.42);
+  }
+
+  .surface:hover {
+    transform: translateY(-1px);
+    border-color: rgba(171, 214, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.06);
   }
 }
