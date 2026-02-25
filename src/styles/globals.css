@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 *,
@@ -20,6 +21,7 @@ html {
 body {
   @apply bg-aegis-bg text-slate-100 antialiased;
   min-height: 100vh;
+  overflow-x: clip;
   background-image:
     radial-gradient(1200px circle at 8% -10%, rgba(80, 123, 255, 0.28), transparent 36%),
     radial-gradient(900px circle at 90% -20%, rgba(56, 106, 255, 0.24), transparent 34%),
@@ -42,6 +44,18 @@ body::before {
 
 a {
   @apply transition-colors;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+input[type="date"],
+input[type="time"] {
+  min-width: 0;
+  width: 100%;
 }
 
 @layer utilities {
