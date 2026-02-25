@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function BookDemoPage() {
   return (
-    <section className="section-spacing pt-16">
+    <section className="section-spacing pt-28 md:pt-20">
       <Container className="flex flex-col items-center">
         <div className="mb-8 max-w-2xl text-center">
           <h1 className="text-4xl font-bold text-white">Book a Strategic Consultation</h1>
