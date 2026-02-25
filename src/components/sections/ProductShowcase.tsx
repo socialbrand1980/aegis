@@ -202,8 +202,8 @@ function PrototypeScreen({ variant = "dashboard" }: { variant?: "dashboard" | "s
     <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0a173a] p-2.5 sm:p-3">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(59,130,246,0.2),transparent_35%),radial-gradient(circle_at_88%_10%,rgba(99,102,241,0.22),transparent_30%)]" />
       <div className="relative space-y-3">
-        <div className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.05] px-2.5 py-2 sm:px-3">
-          <p className="text-[10px] uppercase tracking-wide text-slate-200 sm:text-[11px]">{c.dashboardTitle}</p>
+        <div className="flex items-center justify-between gap-2 rounded-lg border border-white/10 bg-white/[0.05] px-2.5 py-2 sm:px-3">
+          <p className="min-w-0 truncate text-[10px] uppercase tracking-wide text-slate-200 sm:text-[11px]">{c.dashboardTitle}</p>
           <div className="flex gap-1.5">
             <span className="h-2 w-2 rounded-full bg-white/20" />
             <span className="h-2 w-2 rounded-full bg-white/20" />
@@ -249,10 +249,10 @@ function PrototypeScreen({ variant = "dashboard" }: { variant?: "dashboard" | "s
 
         {variant === "conversation" && (
           <div className="space-y-2">
-            <div className="ml-auto w-2/3 rounded-lg bg-blue-500/30 px-2 py-1.5 text-xs text-white">{c.chat1}</div>
-            <div className="w-3/4 rounded-lg bg-white/12 px-2 py-1.5 text-xs text-slate-100">{c.chat2}</div>
-            <div className="ml-auto w-1/2 rounded-lg bg-blue-500/30 px-2 py-1.5 text-xs text-white">{c.chat3}</div>
-            <div className="w-4/5 rounded-lg bg-white/12 px-2 py-1.5 text-xs text-slate-100">{c.chat4}</div>
+            <div className="ml-auto w-2/3 rounded-lg bg-blue-500/30 px-2 py-1.5 text-xs text-white break-words">{c.chat1}</div>
+            <div className="w-3/4 rounded-lg bg-white/12 px-2 py-1.5 text-xs text-slate-100 break-words">{c.chat2}</div>
+            <div className="ml-auto w-1/2 rounded-lg bg-blue-500/30 px-2 py-1.5 text-xs text-white break-words">{c.chat3}</div>
+            <div className="w-4/5 rounded-lg bg-white/12 px-2 py-1.5 text-xs text-slate-100 break-words">{c.chat4}</div>
           </div>
         )}
 
@@ -298,7 +298,9 @@ function BrowserMockup() {
           <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
           <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
           <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
-          <div className="ml-3 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-slate-300">app.aegis-ai.io/dashboard</div>
+          <div className="ml-1 min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-300">
+            <span className="block truncate">app.aegis-ai.io/dashboard</span>
+          </div>
         </div>
 
         <PrototypeScreen variant="dashboard" />
@@ -333,7 +335,7 @@ export function ProductShowcase() {
   const c = contentByLanguage[language];
 
   return (
-    <div>
+    <div className="overflow-x-clip">
       <section className="section-spacing pt-20">
         <Container className="max-w-7xl">
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
@@ -391,7 +393,7 @@ export function ProductShowcase() {
                     key={step.title}
                     whileInView={{ opacity: 1, scale: 1 }}
                     initial={{ opacity: 0.6, scale: 0.97 }}
-                    className="min-w-[92%] snap-center rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:min-w-[82%]"
+                    className="min-w-[88%] snap-center rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:min-w-[82%]"
                   >
                     <p className="text-xs uppercase tracking-[0.2em] text-blue-300">{c.screenLabel} {index + 1}</p>
                     <h3 className="mt-2 text-lg font-semibold text-white sm:text-xl">{step.title}</h3>
