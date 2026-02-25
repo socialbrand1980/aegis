@@ -18,12 +18,12 @@ type TextareaFieldProps = SharedProps &
 
 export function Input(props: InputFieldProps | TextareaFieldProps) {
   const commonClass =
-    "mt-2 w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300/70 outline-none transition focus:border-aegis-glow/70 focus:ring-2 focus:ring-aegis-glow/30";
+    "mt-2 block w-full min-w-0 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300/70 outline-none transition focus:border-aegis-glow/70 focus:ring-2 focus:ring-aegis-glow/30";
 
   if (props.as === "textarea") {
     const { label, className, as, ...textareaProps } = props;
     return (
-      <label className={cn("block text-sm font-medium text-slate-200", className)}>
+      <label className={cn("block min-w-0 text-sm font-medium text-slate-200", className)}>
         {label}
         <textarea className={commonClass} {...textareaProps} />
       </label>
@@ -32,7 +32,7 @@ export function Input(props: InputFieldProps | TextareaFieldProps) {
 
   const { label, className, ...inputProps } = props;
   return (
-    <label className={cn("block text-sm font-medium text-slate-200", className)}>
+    <label className={cn("block min-w-0 text-sm font-medium text-slate-200", className)}>
       {label}
       <input className={commonClass} {...inputProps} />
     </label>

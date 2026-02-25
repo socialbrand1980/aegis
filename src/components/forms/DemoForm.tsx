@@ -84,22 +84,22 @@ export function DemoForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass w-full max-w-2xl space-y-4 p-6 md:p-8">
+    <form onSubmit={handleSubmit} className="glass w-full max-w-2xl space-y-4 overflow-hidden p-6 md:p-8">
       <Input name="fullName" label="Full Name" placeholder="Your full name" required />
       <Input name="companyName" label="Company Name" placeholder="Your company" required />
       <Input name="industry" label="Industry" placeholder="Agency, Legal, Clinic, ..." required />
       <Input name="email" type="email" label="Email" placeholder="name@company.com" required />
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid min-w-0 gap-4 sm:grid-cols-2">
         <Input name="preferredDate" type="date" label="Preferred Date" required />
         <Input name="preferredTime" type="time" label="Preferred Time" required />
       </div>
 
-      <label className="block text-sm font-medium text-slate-200">
+      <label className="block min-w-0 text-sm font-medium text-slate-200">
         Monthly Revenue Range
         <select
           name="monthlyRevenueRange"
           required
-          className="mt-2 w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white outline-none transition focus:border-aegis-glow/70 focus:ring-2 focus:ring-aegis-glow/30"
+          className="mt-2 block w-full min-w-0 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white outline-none transition focus:border-aegis-glow/70 focus:ring-2 focus:ring-aegis-glow/30"
         >
           <option value="" className="bg-[#0A1128]">
             Select range
