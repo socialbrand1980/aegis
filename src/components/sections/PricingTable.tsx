@@ -190,7 +190,7 @@ export function PricingTable() {
           ))}
         </div>
 
-        <p className="mt-6 text-sm font-semibold text-aegis-glow">This is not ad spend. This is acquisition infrastructure.</p>
+      
 
         <div className="mt-7">
           <Button href="/book-demo" size="lg">
