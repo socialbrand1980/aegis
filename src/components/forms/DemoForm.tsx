@@ -11,6 +11,21 @@ const revenueRanges = [
   "> $150K / month"
 ];
 
+function formatGoogleDate(date: Date) {
+  const pad = (value: number) => String(value).padStart(2, "0");
+
+  return [
+    date.getUTCFullYear(),
+    pad(date.getUTCMonth() + 1),
+    pad(date.getUTCDate()),
+    "T",
+    pad(date.getUTCHours()),
+    pad(date.getUTCMinutes()),
+    pad(date.getUTCSeconds()),
+    "Z"
+  ].join("");
+}
+
 export function DemoForm() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
@@ -26,31 +41,44 @@ export function DemoForm() {
     const companyName = String(formData.get("companyName") ?? "");
     const industry = String(formData.get("industry") ?? "");
     const email = String(formData.get("email") ?? "");
+    const preferredDate = String(formData.get("preferredDate") ?? "");
+    const preferredTime = String(formData.get("preferredTime") ?? "");
     const monthlyRevenueRange = String(formData.get("monthlyRevenueRange") ?? "");
     const message = String(formData.get("message") ?? "");
 
-    const subject = encodeURIComponent(`Demo Request - ${companyName || fullName}`);
-    const body = encodeURIComponent(
-      [
-        "Halo tim Aegis AI,",
-        "",
-        "Saya ingin booking demo.",
-        "",
-        `Nama: ${fullName}`,
-        `Company: ${companyName}`,
-        `Industry: ${industry}`,
-        `Email: ${email}`,
-        `Monthly Revenue: ${monthlyRevenueRange}`,
-        "",
-        "Message:",
-        message || "-",
-        "",
-        "Terima kasih."
-      ].join("\n")
-    );
+    const start = new Date(`${preferredDate}T${preferredTime}`);
+    const end = new Date(start.getTime() + 30 * 60 * 1000);
 
-    window.location.href = `mailto:hello@aegis-ai.co?subject=${subject}&body=${body}`;
-    setStatus("Aplikasi email Anda sudah dibuka. Silakan kirim email untuk melanjutkan booking demo.");
+    if (Number.isNaN(start.getTime())) {
+      setStatus("Jadwal tidak valid. Mohon pilih tanggal dan jam meeting yang benar.");
+      setLoading(false);
+      return;
+    }
+
+    const details = [
+      "Demo Request - Aegis AI",
+      "",
+      `Nama: ${fullName}`,
+      `Company: ${companyName}`,
+      `Industry: ${industry}`,
+      `Email: ${email}`,
+      `Monthly Revenue: ${monthlyRevenueRange}`,
+      "",
+      "Kebutuhan / Challenge:",
+      message || "-"
+    ].join("\n");
+
+    const params = new URLSearchParams({
+      action: "TEMPLATE",
+      text: `Aegis AI Demo - ${companyName || fullName}`,
+      dates: `${formatGoogleDate(start)}/${formatGoogleDate(end)}`,
+      details,
+      location: "Google Meet",
+      add: "socialbrand1980@gmail.com"
+    });
+
+    window.open(`https://calendar.google.com/calendar/render?${params.toString()}`, "_blank", "noopener,noreferrer");
+    setStatus("Google Calendar terbuka. Lanjutkan Save untuk kirim undangan meeting ke socialbrand1980@gmail.com.");
     setLoading(false);
     form.reset();
   }
@@ -61,6 +89,10 @@ export function DemoForm() {
       <Input name="companyName" label="Company Name" placeholder="Your company" required />
       <Input name="industry" label="Industry" placeholder="Agency, Legal, Clinic, ..." required />
       <Input name="email" type="email" label="Email" placeholder="name@company.com" required />
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Input name="preferredDate" type="date" label="Preferred Date" required />
+        <Input name="preferredTime" type="time" label="Preferred Time" required />
+      </div>
 
       <label className="block text-sm font-medium text-slate-200">
         Monthly Revenue Range
@@ -83,7 +115,7 @@ export function DemoForm() {
       <Input as="textarea" name="message" label="Message" placeholder="Tell us your current acquisition challenges" rows={5} />
 
       <Button type="submit" size="lg" className="w-full" disabled={loading}>
-        {loading ? "Sending..." : "Book Demo"}
+        {loading ? "Opening Calendar..." : "Book Demo"}
       </Button>
 
       {status ? <p className="text-center text-sm text-slate-200">{status}</p> : null}
