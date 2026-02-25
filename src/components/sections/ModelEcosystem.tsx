@@ -15,6 +15,7 @@ const modelLogos = [
 
 export function ModelEcosystem() {
   const { t } = useLanguage();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
     <section className="section-spacing">
@@ -39,7 +40,13 @@ export function ModelEcosystem() {
             <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
               {modelLogos.map((logo) => (
                 <div key={logo.name} className="surface flex min-h-20 items-center justify-center gap-2 p-4">
-                  <Image src={logo.src} alt={`${logo.name} logo`} width={28} height={28} className="h-7 w-7 text-white" />
+                  <Image
+                    src={`${basePath}${logo.src}`}
+                    alt={`${logo.name} logo`}
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 text-white"
+                  />
                   <span className="text-sm font-medium text-slate-200">{logo.name}</span>
                 </div>
               ))}
