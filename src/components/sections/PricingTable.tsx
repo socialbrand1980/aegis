@@ -40,7 +40,7 @@ export function PricingTable() {
           {
             id: "support",
             title: "Support",
-            items: ["Community support", "Aegis watermark"]
+            items: ["Community support"]
           }
         ]
       },
@@ -73,7 +73,7 @@ export function PricingTable() {
           {
             id: "support",
             title: "Support",
-            items: ["Email support", "No watermark"]
+            items: ["Email support"]
           }
         ]
       },
@@ -196,7 +196,7 @@ export function PricingTable() {
 
         <div className="mt-7">
           <Button href="/book-demo" size="lg">
-            Book a Strategic Consultation
+            Try Aegis Now
           </Button>
         </div>
 

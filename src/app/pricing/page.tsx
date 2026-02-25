@@ -12,8 +12,8 @@ export default function PricingPage() {
     <>
       <PricingTable />
       <CTASection
-        title="Pricing Transparan untuk Implementasi Serius"
-        description="Setup gratis dengan biaya subscription tahunan dan maintenance bulanan untuk menjaga performa sistem tetap optimal."
+        title="Integrate your bussines with Aegis AI"
+        description="With just one click. Aegis can run your bussines."
       />
     </>
   );
