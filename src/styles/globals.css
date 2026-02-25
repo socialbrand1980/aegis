@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+body {
+  @apply bg-aegis-bg text-slate-100 antialiased;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(1200px circle at 8% -10%, rgba(80, 123, 255, 0.28), transparent 36%),
+    radial-gradient(900px circle at 90% -20%, rgba(56, 106, 255, 0.24), transparent 34%),
+    radial-gradient(700px circle at 50% 120%, rgba(29, 62, 140, 0.2), transparent 42%),
+    linear-gradient(180deg, #050a1a 0%, #081231 38%, #07112b 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.28;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 90%);
+}
+
+a {
+  @apply transition-colors;
+}
+
+@layer utilities {
+  .glass {
+    @apply border border-white/20 bg-white/[0.07] backdrop-blur-xl rounded-3xl shadow-glass;
+  }
+
+  .surface {
+    @apply border border-white/10 bg-white/[0.04] rounded-2xl;
+  }
+
+  .section-spacing {
+    @apply py-20 md:py-28;
+  }
+
+  .headline {
+    @apply text-4xl font-semibold tracking-tight text-white md:text-5xl;
+  }
+
+  .subcopy {
+    @apply text-base leading-relaxed text-slate-300 md:text-lg;
+  }
+
+  .touch-feedback {
+    @apply transition-transform duration-200 active:scale-[0.98];
+  }
+
+  .mobile-sheet {
+    @apply origin-top overflow-hidden transition-all duration-300 ease-out;
+  }
+
+  .mobile-sheet-open {
+    @apply max-h-96 translate-y-0 opacity-100;
+  }
+
+  .mobile-sheet-closed {
+    @apply max-h-0 -translate-y-2 opacity-0 pointer-events-none;
+  }
+
+  .accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 260ms ease, opacity 220ms ease;
+    opacity: 0;
+  }
+
+  .accordion-content.open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
