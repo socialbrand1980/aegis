@@ -199,9 +199,9 @@ function PrototypeScreen({ variant = "dashboard" }: { variant?: "dashboard" | "s
   const c = contentByLanguage[language];
 
   return (
-    <div className="relative h-[248px] overflow-hidden rounded-xl border border-white/10 bg-[#0a173a] p-2.5 sm:h-[278px] sm:p-3">
+    <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0a173a] p-2.5 sm:p-3">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(59,130,246,0.2),transparent_35%),radial-gradient(circle_at_88%_10%,rgba(99,102,241,0.22),transparent_30%)]" />
-      <div className="no-scrollbar relative h-full space-y-2 overflow-y-auto pr-0.5 sm:space-y-3">
+      <div className="relative space-y-3">
         <div className="flex items-center justify-between gap-2 rounded-lg border border-white/10 bg-white/[0.05] px-2.5 py-2 sm:px-3">
           <p className="min-w-0 truncate text-[10px] uppercase tracking-wide text-slate-200 sm:text-[11px]">{c.dashboardTitle}</p>
           <div className="flex gap-1.5">
@@ -214,13 +214,8 @@ function PrototypeScreen({ variant = "dashboard" }: { variant?: "dashboard" | "s
         {variant === "dashboard" && (
           <>
             <div className="grid grid-cols-1 gap-2 min-[440px]:grid-cols-3">
-              {c.kpis.map((item, index) => (
-                <div
-                  key={item.label}
-                  className={`rounded-md border border-white/10 bg-white/[0.04] p-2 ${
-                    index === 2 ? "hidden min-[440px]:block" : ""
-                  }`}
-                >
+              {c.kpis.map((item) => (
+                <div key={item.label} className="rounded-md border border-white/10 bg-white/[0.04] p-2">
                   <p className="text-[11px] text-slate-200">{item.label}</p>
                   <p className="mt-1 text-sm font-semibold text-white sm:text-base">{item.value}</p>
                 </div>
@@ -380,59 +375,6 @@ export function ProductShowcase() {
           </div>
 
           <SectionCta />
-        </Container>
-      </section>
-
-      <section className="section-spacing pt-2">
-        <Container className="max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="lg:sticky lg:top-24 lg:self-start">
-              <h2 className="text-2xl font-semibold text-white sm:text-3xl md:text-4xl">{t("product.interactiveTitle")}</h2>
-              <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-300 sm:text-base">{t("product.interactiveDesc")}</p>
-            </div>
-
-            <div className="lg:hidden">
-              <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
-                {c.workflowSteps.map((step, index) => (
-                  <motion.div
-                    key={step.title}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    initial={{ opacity: 0.6, scale: 0.97 }}
-                    className="min-w-[88%] snap-center rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:min-w-[82%]"
-                  >
-                    <p className="text-xs uppercase tracking-[0.2em] text-blue-300">{c.screenLabel} {index + 1}</p>
-                    <h3 className="mt-2 text-lg font-semibold text-white sm:text-xl">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-300">{step.description}</p>
-                    <div className="mt-4">
-                      <motion.div initial={{ opacity: 0.7, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }}>
-                        <PrototypeScreen variant={index === 0 ? "setup" : index === 1 ? "conversation" : "analytics"} />
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            <div className="hidden space-y-5 lg:block">
-              {c.workflowSteps.map((step, index) => (
-                <motion.div
-                  key={step.title}
-                  initial={{ opacity: 0.4, scale: 0.97 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: false, amount: 0.6 }}
-                  transition={{ duration: 0.45 }}
-                  className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl xl:p-7"
-                >
-                  <p className="text-xs uppercase tracking-[0.2em] text-blue-300">{c.screenLabel} {index + 1}</p>
-                  <h3 className="mt-2 text-2xl font-semibold text-white">{step.title}</h3>
-                  <p className="mt-2 text-slate-300">{step.description}</p>
-                  <div className="mt-5">
-                    <PrototypeScreen variant={index === 0 ? "setup" : index === 1 ? "conversation" : "analytics"} />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
         </Container>
       </section>
 
