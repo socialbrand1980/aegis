@@ -4,12 +4,7 @@ import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 
-const pricingPlans = [
-  "Aegis Core (Free)",
-  "Aegis Growth (Rp 399.000 / month)",
-  "Aegis Professional (Rp 2.500.000 / month)",
-  "Aegis Enterprise (Rp 50.000.000 / year)"
-];
+const enterprisePlan = "Aegis Enterprise (Rp 50.000.000 / year)";
 
 function formatGoogleDate(date: Date) {
   const pad = (value: number) => String(value).padStart(2, "0");
@@ -43,7 +38,7 @@ export function DemoForm() {
     const email = String(formData.get("email") ?? "");
     const preferredDate = String(formData.get("preferredDate") ?? "");
     const preferredTime = String(formData.get("preferredTime") ?? "");
-    const selectedPlan = String(formData.get("selectedPlan") ?? "");
+    const selectedPlan = String(formData.get("selectedPlan") ?? enterprisePlan);
     const message = String(formData.get("message") ?? "");
 
     const start = new Date(`${preferredDate}T${preferredTime}`);
@@ -96,20 +91,12 @@ export function DemoForm() {
 
       <label className="block min-w-0 text-sm font-medium text-slate-200">
         Pricing Plan
-        <select
-          name="selectedPlan"
-          required
-          className="mt-2 block w-full min-w-0 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white outline-none transition focus:border-aegis-glow/70 focus:ring-2 focus:ring-aegis-glow/30"
-        >
-          <option value="" className="bg-[#0A1128]">
-            Select plan
-          </option>
-          {pricingPlans.map((plan) => (
-            <option key={plan} value={plan} className="bg-[#0A1128]">
-              {plan}
-            </option>
-          ))}
-        </select>
+        <input
+          value={enterprisePlan}
+          readOnly
+          className="mt-2 block w-full min-w-0 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white outline-none"
+        />
+        <input type="hidden" name="selectedPlan" value={enterprisePlan} />
       </label>
 
       <Input as="textarea" name="message" label="Message" placeholder="Tell us your current acquisition challenges" rows={5} />
