@@ -199,9 +199,9 @@ function PrototypeScreen({ variant = "dashboard" }: { variant?: "dashboard" | "s
   const c = contentByLanguage[language];
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0a173a] p-2.5 sm:p-3">
+    <div className="relative h-[248px] overflow-hidden rounded-xl border border-white/10 bg-[#0a173a] p-2.5 sm:h-[278px] sm:p-3">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(59,130,246,0.2),transparent_35%),radial-gradient(circle_at_88%_10%,rgba(99,102,241,0.22),transparent_30%)]" />
-      <div className="relative space-y-3">
+      <div className="no-scrollbar relative h-full space-y-2 overflow-y-auto pr-0.5 sm:space-y-3">
         <div className="flex items-center justify-between gap-2 rounded-lg border border-white/10 bg-white/[0.05] px-2.5 py-2 sm:px-3">
           <p className="min-w-0 truncate text-[10px] uppercase tracking-wide text-slate-200 sm:text-[11px]">{c.dashboardTitle}</p>
           <div className="flex gap-1.5">
@@ -214,8 +214,13 @@ function PrototypeScreen({ variant = "dashboard" }: { variant?: "dashboard" | "s
         {variant === "dashboard" && (
           <>
             <div className="grid grid-cols-1 gap-2 min-[440px]:grid-cols-3">
-              {c.kpis.map((item) => (
-                <div key={item.label} className="rounded-md border border-white/10 bg-white/[0.04] p-2">
+              {c.kpis.map((item, index) => (
+                <div
+                  key={item.label}
+                  className={`rounded-md border border-white/10 bg-white/[0.04] p-2 ${
+                    index === 2 ? "hidden min-[440px]:block" : ""
+                  }`}
+                >
                   <p className="text-[11px] text-slate-200">{item.label}</p>
                   <p className="mt-1 text-sm font-semibold text-white sm:text-base">{item.value}</p>
                 </div>
