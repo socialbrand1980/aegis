@@ -190,7 +190,9 @@ export function PricingTable() {
           ))}
         </div>
 
-      
+        <p className="mt-6 text-sm font-semibold text-aegis-glow">
+          Designed for enterprise operations with structured data security, access control, and compliance-ready workflows.
+        </p>
 
         <div className="mt-7">
           <Button href="/book-demo" size="lg">

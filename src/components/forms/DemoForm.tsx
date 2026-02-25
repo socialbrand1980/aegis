@@ -4,11 +4,11 @@ import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 
-const revenueRanges = [
-  "< $10K / month",
-  "$10K - $50K / month",
-  "$50K - $150K / month",
-  "> $150K / month"
+const pricingPlans = [
+  "Aegis Core (Free)",
+  "Aegis Growth (Rp 399.000 / month)",
+  "Aegis Professional (Rp 2.500.000 / month)",
+  "Aegis Enterprise (Rp 50.000.000 / year)"
 ];
 
 function formatGoogleDate(date: Date) {
@@ -43,7 +43,7 @@ export function DemoForm() {
     const email = String(formData.get("email") ?? "");
     const preferredDate = String(formData.get("preferredDate") ?? "");
     const preferredTime = String(formData.get("preferredTime") ?? "");
-    const monthlyRevenueRange = String(formData.get("monthlyRevenueRange") ?? "");
+    const selectedPlan = String(formData.get("selectedPlan") ?? "");
     const message = String(formData.get("message") ?? "");
 
     const start = new Date(`${preferredDate}T${preferredTime}`);
@@ -62,7 +62,7 @@ export function DemoForm() {
       `Company: ${companyName}`,
       `Industry: ${industry}`,
       `Email: ${email}`,
-      `Monthly Revenue: ${monthlyRevenueRange}`,
+      `Selected Plan: ${selectedPlan}`,
       "",
       "Kebutuhan / Challenge:",
       message || "-"
@@ -95,18 +95,18 @@ export function DemoForm() {
       </div>
 
       <label className="block min-w-0 text-sm font-medium text-slate-200">
-        Monthly Revenue Range
+        Pricing Plan
         <select
-          name="monthlyRevenueRange"
+          name="selectedPlan"
           required
           className="mt-2 block w-full min-w-0 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white outline-none transition focus:border-aegis-glow/70 focus:ring-2 focus:ring-aegis-glow/30"
         >
           <option value="" className="bg-[#0A1128]">
-            Select range
+            Select plan
           </option>
-          {revenueRanges.map((range) => (
-            <option key={range} value={range} className="bg-[#0A1128]">
-              {range}
+          {pricingPlans.map((plan) => (
+            <option key={plan} value={plan} className="bg-[#0A1128]">
+              {plan}
             </option>
           ))}
         </select>
