@@ -15,33 +15,44 @@ export function DemoForm() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
     setStatus(null);
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
+    const fullName = String(formData.get("fullName") ?? "");
+    const companyName = String(formData.get("companyName") ?? "");
+    const industry = String(formData.get("industry") ?? "");
+    const email = String(formData.get("email") ?? "");
+    const monthlyRevenueRange = String(formData.get("monthlyRevenueRange") ?? "");
+    const message = String(formData.get("message") ?? "");
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
+    const subject = encodeURIComponent(`Demo Request - ${companyName || fullName}`);
+    const body = encodeURIComponent(
+      [
+        "Halo tim Aegis AI,",
+        "",
+        "Saya ingin booking demo.",
+        "",
+        `Nama: ${fullName}`,
+        `Company: ${companyName}`,
+        `Industry: ${industry}`,
+        `Email: ${email}`,
+        `Monthly Revenue: ${monthlyRevenueRange}`,
+        "",
+        "Message:",
+        message || "-",
+        "",
+        "Terima kasih."
+      ].join("\n")
+    );
 
-      if (!response.ok) {
-        throw new Error("Failed to submit");
-      }
-
-      setStatus("Request terkirim. Tim kami akan menghubungi kamu dalam 1x24 jam kerja.");
-      form.reset();
-    } catch {
-      setStatus("Terjadi kendala saat mengirim form. Silakan coba lagi.");
-    } finally {
-      setLoading(false);
-    }
+    window.location.href = `mailto:hello@aegis-ai.co?subject=${subject}&body=${body}`;
+    setStatus("Aplikasi email Anda sudah dibuka. Silakan kirim email untuk melanjutkan booking demo.");
+    setLoading(false);
+    form.reset();
   }
 
   return (
