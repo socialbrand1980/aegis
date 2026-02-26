@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { resourcePosts } from "@/lib/constants";
 import { Container } from "@/components/layout/Container";
+import { constantsByLanguage } from "@/lib/i18n-constants";
 
 type ResourceSlugPageProps = {
   params: {
@@ -10,15 +10,17 @@ type ResourceSlugPageProps = {
 };
 
 export function generateStaticParams() {
-  return resourcePosts.map((post) => ({ slug: post.slug }));
+  const constants = constantsByLanguage.id; // Use ID as default for static params
+  return constants.resourcePosts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: ResourceSlugPageProps): Promise<Metadata> {
-  const post = resourcePosts.find((item) => item.slug === params.slug);
+  const constants = constantsByLanguage.id; // Use ID as default for metadata
+  const post = constants.resourcePosts.find((item) => item.slug === params.slug);
 
   if (!post) {
     return {
-      title: "Resource Not Found"
+      title: "Documentation Not Found"
     };
   }
 
@@ -29,7 +31,9 @@ export async function generateMetadata({ params }: ResourceSlugPageProps): Promi
 }
 
 export default function ResourceSlugPage({ params }: ResourceSlugPageProps) {
-  const post = resourcePosts.find((item) => item.slug === params.slug);
+  const constants = constantsByLanguage.id; // Use ID as default
+  const post = constants.resourcePosts.find((item) => item.slug === params.slug);
+  
   if (!post) notFound();
 
   return (
@@ -41,7 +45,7 @@ export default function ResourceSlugPage({ params }: ResourceSlugPageProps) {
           {post.date} • {post.readTime}
         </p>
         <article className="glass mt-8 p-6 text-slate-200">
-          <p>{post.content}</p>
+          <p className="whitespace-pre-line">{post.content}</p>
         </article>
       </Container>
     </section>

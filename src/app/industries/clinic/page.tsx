@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
-import { industries } from "@/lib/constants";
+"use client";
+
+import { constantsByLanguage } from "@/lib/i18n-constants";
 import { Container } from "@/components/layout/Container";
 import { Card } from "@/components/ui/Card";
 import { CTASection } from "@/components/sections/CTASection";
-
-export const metadata: Metadata = {
-  title: "Industry: Clinic",
-  description: "Optimasi inquiry-to-booking untuk klinik dengan AI conversation flow yang konsisten."
-};
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export default function ClinicPage() {
-  const industry = industries.find((item) => item.slug === "clinic");
+  const { language, t } = useLanguage();
+  const constants = constantsByLanguage[language];
+  const industry = constants.industries.find((item) => item.slug === "clinic");
   if (!industry) return null;
 
   return (
@@ -28,14 +27,17 @@ export default function ClinicPage() {
           <Card>
             <h2 className="text-2xl font-bold text-white">Expected Outcomes</h2>
             <ul className="mt-3 space-y-2 text-slate-300">
-              {industry.outcomes.map((outcome) => (
+              {industry.outcomes.map((outcome: string) => (
                 <li key={outcome}>• {outcome}</li>
               ))}
             </ul>
           </Card>
         </Container>
       </section>
-      <CTASection />
+      <CTASection
+        title={t("industries.ctaTitle")}
+        description={t("industries.ctaDescription")}
+      />
     </>
   );
 }

@@ -15,9 +15,14 @@ const navItems = [
   { key: "industries", href: "/industries" },
   { key: "caseStudies", href: "/case-studies" },
   { key: "pricing", href: "/pricing" },
-  { key: "resources", href: "/resources" },
+  { key: "resources", href: "/docs" },
   { key: "bookDemo", href: "/book-demo" }
 ] as const;
+
+function isActivePath(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export function Navbar() {
   const pathname = usePathname();
@@ -34,7 +39,7 @@ export function Navbar() {
 
           <nav className="hidden items-center gap-1 xl:flex">
             {navItems.map((item) => {
-              const active = pathname === item.href;
+              const active = isActivePath(pathname, item.href);
               const label = t(`nav.${item.key}`);
               const isCta = item.key === "bookDemo";
               if (isCta) {
@@ -84,7 +89,7 @@ export function Navbar() {
                 className={cn(
                   "touch-feedback block rounded-xl px-3 py-2 text-sm text-slate-200 transition-all duration-300 hover:bg-white/10 hover:text-white",
                   open ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0",
-                  pathname === item.href && "bg-white/10 text-white"
+                  isActivePath(pathname, item.href) && "bg-white/10 text-white"
                 )}
               >
                 {t(`nav.${item.key}`)}

@@ -353,33 +353,43 @@ export const caseStudies: CaseStudy[] = [
 
 export const resourcePosts: ResourcePost[] = [
   {
-    slug: "ai-lead-response-playbook",
-    title: "AI Lead Response Playbook untuk Service Business",
-    excerpt: "Framework implementasi response + follow up agar lead tidak hilang di tengah funnel.",
-    category: "Playbook",
-    readTime: "6 min",
-    date: "2026-01-12",
+    slug: "quick-start-implementation",
+    title: "Quick Start: Implementasi Aegis AI",
+    excerpt: "Panduan tahap demi tahap setup awal hingga sistem siap live.",
+    category: "Getting Started",
+    readTime: "8 min",
+    date: "2026-02-25",
     content:
-      "Dokumen ini menjelaskan cara menyusun SLA response, cadence follow up, dan handoff ke sales team agar pipeline menjadi lebih prediktif."
+      "Tujuan:\nMenyiapkan Aegis AI agar bisa langsung dipakai sebagai client acquisition infrastructure.\n\nLangkah Implementasi:\n1. Definisikan objective bisnis (meeting target bulanan, conversion target, dan revenue target).\n2. Tetapkan ICP (industry, ukuran bisnis, wilayah, dan profil decision maker).\n3. Upload data dasar penawaran (service utama, studi kasus, differentiator, dan CTA).\n4. Pilih channel operasional (Instagram, Email, WhatsApp, atau kombinasi multi-channel).\n5. Aktifkan sequence follow up awal (day 3, day 7, day 14).\n6. Uji 1 minggu pertama pada sample audience sebelum scale penuh.\n\nOutput yang diharapkan:\n- Workflow outreach aktif.\n- Kualifikasi lead berjalan otomatis.\n- Dashboard metrik mulai terisi untuk baseline analisis."
   },
   {
-    slug: "measuring-client-acquisition-roi",
-    title: "Measuring Client Acquisition ROI",
-    excerpt: "Cara menghubungkan activity outreach dengan hasil revenue secara operasional.",
-    category: "Analytics",
-    readTime: "5 min",
-    date: "2025-12-02",
+    slug: "operational-workflow-guide",
+    title: "Operational Workflow Guide",
+    excerpt: "Cara kerja Aegis AI dari targeting sampai eskalasi hot lead.",
+    category: "Operations",
+    readTime: "10 min",
+    date: "2026-02-25",
     content:
-      "Gunakan kombinasi metrik response, qualification, meeting booked, conversion rate, dan revenue generated untuk evaluasi berkala."
+      "Alur Kerja Sistem:\n\nPhase 1 - Strategic Targeting Engine\n- Sistem memetakan niche, ICP, dan prioritas akun berdasarkan potensi.\n\nPhase 2 - AI Lead Hunter\n- Prospek dikumpulkan dan diperkaya datanya sesuai parameter targeting.\n\nPhase 3 - Outreach & Conversation Engine\n- AI memulai percakapan personal.\n- Respons prospect dipetakan berdasarkan intent.\n\nPhase 4 - Follow Up Automation\n- Follow up otomatis berjalan terjadwal dengan konten bernilai.\n\nPhase 5 - Qualification & Escalation\n- Lead diklasifikasikan (hot, warm, cold).\n- Hot lead langsung dieskalasi ke tim closing.\n\nPhase 6 - Dashboard & Optimization\n- Tim memonitor response rate, meeting rate, conversion, dan revenue impact.\n- Script serta targeting dioptimasi berkala dari data aktual."
   },
   {
-    slug: "enterprise-ai-compliance-basics",
-    title: "Enterprise AI Compliance Basics",
-    excerpt: "Checklist governance dan keamanan data untuk implementasi AI di service business.",
-    category: "Compliance",
+    slug: "conversation-logic-playbook",
+    title: "Conversation Logic Playbook",
+    excerpt: "Playbook respons AI untuk berbagai skenario percakapan prospek.",
+    category: "Conversation Intelligence",
+    readTime: "9 min",
+    date: "2026-02-25",
+    content:
+      "Aturan Respons Utama:\n\n1. Saat prospect bertanya harga\n- Jangan langsung kirim angka.\n- Gali konteks kebutuhan dan objective bisnis prospect.\n- Framing penawaran berdasarkan value, bukan hanya price.\n\n2. Saat prospect bertanya layanan\n- Jelaskan layanan secara singkat dan relevan.\n- Arahkan ke use case yang paling sesuai dengan industrinya.\n\n3. Saat prospect menunjukkan intent tinggi\n- Kirim studi kasus yang relevan.\n- Arahkan ke next step (meeting/demo).\n\n4. Saat prospect tidak membalas\n- Sistem menjalankan follow up sequence otomatis.\n- Gunakan konten edukatif, bukan spam promosi.\n\nChecklist kualitas percakapan:\n- Tone konsisten dengan positioning brand.\n- CTA jelas tapi tetap natural.\n- Tidak over-claim hasil."
+  },
+  {
+    slug: "security-and-governance-standards",
+    title: "Security & Governance Standards",
+    excerpt: "Standar keamanan data, kontrol akses, dan governance operasional.",
+    category: "Security",
     readTime: "7 min",
-    date: "2025-11-04",
+    date: "2026-02-25",
     content:
-      "Fokus pada role-based access, audit trail, data retention, dan SOP eskalasi untuk memastikan implementasi tetap aman dan auditable."
+      "Framework Keamanan Operasional:\n\n1. Access Control\n- Gunakan role-based access untuk membatasi hak akses tim.\n- Pisahkan akses admin, operator, dan reviewer.\n\n2. Data Handling\n- Simpan hanya data yang relevan dengan operasional akuisisi.\n- Terapkan kebijakan retensi dan pembersihan data berkala.\n\n3. Auditability\n- Catat perubahan workflow, script, dan aturan kualifikasi.\n- Pastikan setiap perubahan bisa ditelusuri.\n\n4. Escalation Protocol\n- Siapkan SOP jika ada anomali sistem atau percakapan sensitif.\n- Semua eskalasi harus terdokumentasi.\n\n5. Compliance Readiness\n- Struktur workflow dibuat agar siap untuk kebutuhan governance enterprise.\n- Dokumentasi proses dijaga agar mudah diaudit internal."
   }
 ];

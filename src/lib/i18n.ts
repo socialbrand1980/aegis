@@ -1,5 +1,38 @@
 export type Language = "id" | "en" | "zh";
 
+export type Industry = {
+  slug: string;
+  title: string;
+  problem: string;
+  solution: string;
+  outcomes: string[];
+};
+
+export type CaseStudy = {
+  id: string;
+  client: string;
+  industry: string;
+  timeline: string;
+  workflowTimeline: {
+    phase: string;
+    detail: string[];
+  }[];
+  problem: string[];
+  implementation: string[];
+  metrics: string[];
+  insight: string;
+};
+
+export type ResourcePost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  readTime: string;
+  date: string;
+  content: string;
+};
+
 interface Dict {
   [key: string]: string | Dict;
 }
@@ -13,7 +46,7 @@ export const messages: Record<Language, Dict> = {
       industries: "Industries",
       caseStudies: "Case Studies",
       pricing: "Pricing",
-      resources: "Resources",
+      resources: "Documentation",
       bookDemo: "Book Demo"
     },
     footer: {
@@ -24,55 +57,55 @@ export const messages: Record<Language, Dict> = {
     },
     hero: {
       badge: "Enterprise Growth Infrastructure",
-      title1: "Build a Predictable Client Acquisition Engine",
-      title2: "for Your Service Business",
+      title1: "Bangun Mesin Akuisisi Klien yang Predictable",
+      title2: "untuk Service Business Anda",
       description:
-        "Aegis AI menggabungkan targeting, outreach, follow up, dan qualification dalam satu sistem yang bisa diukur dari respons awal sampai revenue impact.",
-      ctaPrimary: "Schedule Strategy Demo",
-      ctaSecondary: "Explore How It Works",
-      trustTitle: "Trust Indicators",
-      trust1: "Custom-built for service industries",
-      trust2: "Data-driven qualification system",
-      trust3: "Setup once, optimize continuously",
-      stat1: "Prospects / Month",
-      stat2: "Typical Reply Uplift",
-      stat3: "Pipeline Visibility"
+        "Aegis AI menggabungkan targeting, outreach, follow up, dan qualification dalam satu sistem terukur—dari respons pertama sampai impact revenue.",
+      ctaPrimary: "Jadwalkan Demo Strategis",
+      ctaSecondary: "Pelajari Cara Kerjanya",
+      trustTitle: "Kenapa Memilih Aegis",
+      trust1: "Dibangun khusus untuk service industries",
+      trust2: "Sistem qualification berbasis data",
+      trust3: "Setup sekali, optimize terus",
+      stat1: "Prospek / Bulan",
+      stat2: "Kenaikan Reply Rate",
+      stat3: "Visibilitas Pipeline"
     },
     problem: {
-      title: "Most Service Businesses Don't Have a Real Business Development System",
-      currentReality: "Current Reality",
-      businessImpact: "Business Impact",
-      p1: "Referral sebagai sumber utama lead",
-      p2: "Relasi personal sebagai channel penjualan",
-      p3: "Konten organik tanpa sistem follow up",
+      title: "Kebanyakan Service Business Belum Punya Sistem Business Development yang Bener",
+      currentReality: "Kondisi Saat Ini",
+      businessImpact: "Dampak ke Bisnis",
+      p1: "Dependen sama referral untuk lead",
+      p2: "Andalin relasi personal buat jualan",
+      p3: "Konten organik tanpa follow up yang sistematis",
       p4: "Tim sales manual tanpa data terstruktur",
-      i1: "Lead tidak konsisten",
-      i2: "Follow up terlewat",
-      i3: "Tidak tahu conversion rate sebenarnya",
-      i4: "Tidak bisa memprediksi revenue",
-      note: "Tanpa sistem, pertumbuhan selalu fluktuatif."
+      i1: "Lead datang tidak konsisten",
+      i2: "Follow up sering kelewatan",
+      i3: "Gak tau conversion rate yang sebenarnya",
+      i4: "Susah prediksi revenue",
+      note: "Tanpa sistem, pertumbuhan bakal selalu naik-turun."
     },
     solution: {
-      title: "AI-Powered Client Acquisition Infrastructure",
+      title: "Infrastruktur Akuisisi Klien Berbasis AI",
       description:
-        "Aegis AI bukan chatbot dan bukan auto-DM massal. Ini sistem terstruktur dengan 5 lapisan kerja agar akuisisi klien berjalan konsisten, terukur, dan scalable."
+        "Aegis AI bukan chatbot dan bukan auto-DM massal. Ini sistem terstruktur 5 lapisan yang bikin akuisisi klien konsisten, terukur, dan scalable."
     },
     timeline: {
-      title: "Timeline Alur AI Bekerja",
+      title: "Gimana AI Bekerja dari Awal Sampai Hasil",
       description:
-        "Berikut urutan operasional end-to-end bagaimana Aegis AI menjalankan client acquisition infrastructure dari targeting awal sampai dashboard performa, lengkap tanpa diringkas."
+        "Urutan operasional end-to-end Aegis AI—dari targeting awal sampai dashboard performa. Lengkap, tanpa diringkas."
     },
     dashboard: {
-      title: "Measure What Matters",
-      description: "Business development menjadi measurable, bukan asumsi."
+      title: "Ukur Yang Penting, Bukan Yang Asal",
+      description: "Business development jadi measurable, bukan lagi pakai asumsi."
     },
     caseStudies: {
-      title: "Industry Case Studies",
-      description: "Pilih case di bawah ini. Detail lengkap ditampilkan lewat accordion.",
-      timeline: "Timeline Alur AI",
-      problem: "Problem",
-      implementation: "Implementation",
-      results: "Results",
+      title: "Case Studies dari Berbagai Industri",
+      description: "Pilih studi kasus di bawah. Detail lengkap ada di accordion.",
+      timeline: "Timeline Kerja AI",
+      problem: "Masalah",
+      implementation: "Implementasi",
+      results: "Hasil",
       insight: "Insight"
     },
     product: {
@@ -101,6 +134,73 @@ export const messages: Record<Language, Dict> = {
       b3: "Fallback model tersedia untuk menjaga stabilitas saat traffic tinggi.",
       b4: "Prompt framework dan orchestration layer tetap dikontrol oleh Aegis AI.",
       note: "OpenAI, Claude, Anthropic, Qwen, dan DeepSeek adalah merek dagang milik pemilik masing-masing."
+    },
+    comingSoon: {
+      badge: "Segera Hadir",
+      title1: "Sesuatu yang Luar Biasa",
+      title2: "Sedang Dikembangkan",
+      description:
+        "Kami sedang mengembangkan fitur ini dengan hati-hati untuk memberikan pengalaman terbaik. Segera hadir untuk membantu bisnis Anda mencapai pertumbuhan yang lebih predictable dan measurable.",
+      backHome: "Kembali ke Beranda",
+      getNotified: "Dapatkan Notifikasi!",
+      launch: "Launch",
+      features: "Features",
+      experience: "Experience",
+      ctaText: "Ingin tahu lebih lanjut?",
+      ctaLink: "Jadwalkan demo strategis"
+    },
+    productPage: {
+      description:
+        "Controlled product showcase of Aegis AI dashboard prototype, featuring setup engine, conversation intelligence, analytics, and enterprise control."
+    },
+    howItWorks: {
+      ctaTitle: "Implementasi Terstruktur dari Hari Pertama",
+      ctaDescription:
+        "Setiap fase punya outcome jelas sehingga tim kamu bisa bergerak cepat tanpa kehilangan kontrol kualitas."
+    },
+    industries: {
+      ctaTitle: "Need an Industry-Specific Flow?",
+      ctaDescription: "Kami bantu rancang alur conversation dan pipeline yang sesuai karakter pasar kamu."
+    },
+    caseStudiesPage: {
+      title: "Industry Case Studies",
+      description:
+        "Setiap studi kasus mencakup problem, implementasi, hasil, dan insight agar bisa direplikasi pada konteks bisnis Anda."
+    },
+    docs: {
+      description:
+        "Complete Aegis AI documentation: architecture, workflow, orchestration, security, and enterprise operations."
+    },
+    howItWorksSteps: {
+      title: "How It Works",
+      description: "Delivery umumnya berada pada rentang 30-90 hari tergantung kompleksitas industri dan proses internal.",
+      step1Title: "Strategic Discovery",
+      step1Detail: "Audit channel, profile ideal client, bottleneck follow up, dan baseline conversion.",
+      step2Title: "AI Configuration",
+      step2Detail: "Custom workflow, script personalization, tone brand, dan decision-tree intent.",
+      step3Title: "Deployment",
+      step3Detail: "Integrasi CRM, QA alur percakapan, dan aktivasi outreach terjadwal.",
+      step4Title: "Optimization",
+      step4Detail: "Testing script, target refinement, dan improvement cadence berbasis data.",
+      step5Title: "Reporting",
+      step5Detail: "Monthly performance report dengan fokus response, meeting, conversion, dan revenue contribution."
+    },
+    industriesGrid: {
+      title: "Built for High-Value Service Verticals"
+    },
+    caseStudyCard: {
+      timeline: "Timeline Alur AI",
+      problem: "Problem",
+      implementation: "Implementation",
+      results: "Results",
+      insight: "Insight"
+    },
+    pricing: {
+      tryAegis: "Mulai Trial Gratis"
+    },
+    resources: {
+      title: "Documentation",
+      description: "Panduan operasional Aegis AI untuk implementasi client acquisition end-to-end: mulai dari konfigurasi awal, eksekusi outreach, pengelolaan percakapan, sampai evaluasi performa dashboard."
     }
   },
   en: {
@@ -111,7 +211,7 @@ export const messages: Record<Language, Dict> = {
       industries: "Industries",
       caseStudies: "Case Studies",
       pricing: "Pricing",
-      resources: "Resources",
+      resources: "Documentation",
       bookDemo: "Book Demo"
     },
     footer: {
@@ -199,6 +299,73 @@ export const messages: Record<Language, Dict> = {
       b3: "Fallback models are available to maintain stability under high traffic.",
       b4: "Prompt framework and orchestration layer remain controlled by Aegis AI.",
       note: "OpenAI, Claude, Anthropic, Qwen, and DeepSeek are trademarks of their respective owners."
+    },
+    comingSoon: {
+      badge: "Coming Soon",
+      title1: "Something Amazing Is",
+      title2: "In The Works",
+      description:
+        "We're carefully developing this feature to deliver the best experience. Coming soon to help your business achieve more predictable and measurable growth.",
+      backHome: "Back to Home",
+      getNotified: "Get Your Notification Here!",
+      launch: "Launch",
+      features: "Features",
+      experience: "Experience",
+      ctaText: "Want to know more?",
+      ctaLink: "Schedule a strategic demo"
+    },
+    productPage: {
+      description:
+        "Controlled product showcase of Aegis AI dashboard prototype, featuring setup engine, conversation intelligence, analytics, and enterprise control."
+    },
+    howItWorks: {
+      ctaTitle: "Structured Implementation from Day One",
+      ctaDescription:
+        "Every phase has clear outcomes so your team can move fast without losing quality control."
+    },
+    industries: {
+      ctaTitle: "Need an Industry-Specific Flow?",
+      ctaDescription: "We'll help design conversation flows and pipelines that match your market characteristics."
+    },
+    caseStudiesPage: {
+      title: "Industry Case Studies",
+      description:
+        "Each case study covers problem, implementation, results, and insights that can be replicated to your business context."
+    },
+    docs: {
+      description:
+        "Complete Aegis AI documentation: architecture, workflow, orchestration, security, and enterprise operations."
+    },
+    howItWorksSteps: {
+      title: "How It Works",
+      description: "Delivery typically ranges from 30-90 days depending on industry complexity and internal processes.",
+      step1Title: "Strategic Discovery",
+      step1Detail: "Channel audit, ideal client profiling, follow-up bottleneck analysis, and conversion baseline.",
+      step2Title: "AI Configuration",
+      step2Detail: "Custom workflow, script personalization, brand tone, and intent decision-tree.",
+      step3Title: "Deployment",
+      step3Detail: "CRM integration, conversation flow QA, and scheduled outreach activation.",
+      step4Title: "Optimization",
+      step4Detail: "Script testing, target refinement, and data-driven improvement cadence.",
+      step5Title: "Reporting",
+      step5Detail: "Monthly performance report focusing on response, meetings, conversion, and revenue contribution."
+    },
+    industriesGrid: {
+      title: "Built for High-Value Service Verticals"
+    },
+    caseStudyCard: {
+      timeline: "AI Workflow Timeline",
+      problem: "Problem",
+      implementation: "Implementation",
+      results: "Results",
+      insight: "Insight"
+    },
+    pricing: {
+      tryAegis: "Start Free Trial"
+    },
+    resources: {
+      title: "Documentation",
+      description: "Aegis AI operational guides for end-to-end client acquisition implementation: from initial configuration, outreach execution, conversation management, to dashboard performance evaluation."
     }
   },
   zh: {
@@ -209,7 +376,7 @@ export const messages: Record<Language, Dict> = {
       industries: "行业",
       caseStudies: "案例",
       pricing: "价格",
-      resources: "资源",
+      resources: "文档",
       bookDemo: "预约演示"
     },
     footer: {
@@ -290,6 +457,73 @@ export const messages: Record<Language, Dict> = {
       b3: "高并发下可启用备用模型，保障稳定性。",
       b4: "提示词框架与编排层由 Aegis AI 统一控制。",
       note: "OpenAI、Claude、Anthropic、Qwen 与 DeepSeek 均为其各自所有者的商标。"
+    },
+    comingSoon: {
+      badge: "即将推出",
+      title1: "一些令人惊叹的",
+      title2: "正在开发中",
+      description:
+        "我们正在精心开发此功能，以提供最佳体验。即将推出，帮助您的企业实现更可预测和可衡量的增长。",
+      backHome: "返回首页",
+      getNotified: "获取通知！",
+      launch: "发布",
+      features: "功能",
+      experience: "体验",
+      ctaText: "想了解更多？",
+      ctaLink: "预约战略演示"
+    },
+    productPage: {
+      description:
+        "Aegis AI 仪表板原型的受控产品展示，包括设置引擎、对话智能、分析和企业控制。"
+    },
+    howItWorks: {
+      ctaTitle: "从第一天开始的结构化实施",
+      ctaDescription:
+        "每个阶段都有明确的结果，让您的团队可以快速行动而不失质量控制。"
+    },
+    industries: {
+      ctaTitle: "需要特定行业的流程？",
+      ctaDescription: "我们将帮助设计符合您市场特征的对话流程和管道。"
+    },
+    caseStudiesPage: {
+      title: "行业案例研究",
+      description:
+        "每个案例研究都包含问题、实施、结果和洞察，可以复制到您的业务环境中。"
+    },
+    docs: {
+      description:
+        "完整的 Aegis AI 文档：架构、工作流、编排、安全和企业运营。"
+    },
+    howItWorksSteps: {
+      title: "运作方式",
+      description: "交付周期通常为 30-90 天，具体取决于行业复杂性和内部流程。",
+      step1Title: "战略发现",
+      step1Detail: "渠道审计、理想客户画像、跟进瓶颈分析和转化基准。",
+      step2Title: "AI 配置",
+      step2Detail: "定制工作流、脚本个性化、品牌语调和意图决策树。",
+      step3Title: "部署",
+      step3Detail: "CRM 集成、对话流程 QA 和计划外展激活。",
+      step4Title: "优化",
+      step4Detail: "脚本测试、目标细化和数据驱动的改进周期。",
+      step5Title: "报告",
+      step5Detail: "月度绩效报告，重点关注回复、会议、转化和收入贡献。"
+    },
+    industriesGrid: {
+      title: "为高价值服务垂直领域打造"
+    },
+    caseStudyCard: {
+      timeline: "AI 工作流时间线",
+      problem: "问题",
+      implementation: "实施",
+      results: "结果",
+      insight: "洞察"
+    },
+    pricing: {
+      tryAegis: "开始免费试用"
+    },
+    resources: {
+      title: "文档",
+      description: "Aegis AI 运营指南，用于端到端客户获取实施：从初始配置、外展执行、对话管理到仪表板性能评估。"
     }
   }
 };

@@ -6,6 +6,6 @@ export const navigation: NavItem[] = [
   { label: "Industries", href: "/industries" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Resources", href: "/resources" },
+  { label: "Documentation", href: "/docs" },
   { label: "Book Demo", href: "/book-demo" }
 ];

@@ -4,11 +4,11 @@ import { Container } from "@/components/layout/Container";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { constantsByLanguage } from "@/lib/i18n-constants";
 
 export function ProblemSection() {
-  const { t } = useLanguage();
-  const coreProblems = [t("problem.p1"), t("problem.p2"), t("problem.p3"), t("problem.p4")];
-  const coreImpacts = [t("problem.i1"), t("problem.i2"), t("problem.i3"), t("problem.i4")];
+  const { language, t } = useLanguage();
+  const constants = constantsByLanguage[language];
 
   return (
     <section className="section-spacing">
@@ -22,7 +22,7 @@ export function ProblemSection() {
             <Card>
               <h3 className="text-xl font-semibold text-white">{t("problem.currentReality")}</h3>
               <ul className="mt-5 space-y-2.5 text-slate-200">
-                {coreProblems.map((item) => (
+                {constants.coreProblems.map((item) => (
                   <li key={item}>• {item}</li>
                 ))}
               </ul>
@@ -33,7 +33,7 @@ export function ProblemSection() {
             <Card>
               <h3 className="text-xl font-semibold text-white">{t("problem.businessImpact")}</h3>
               <ul className="mt-5 space-y-2.5 text-slate-200">
-                {coreImpacts.map((item) => (
+                {constants.coreImpacts.map((item) => (
                   <li key={item}>• {item}</li>
                 ))}
               </ul>

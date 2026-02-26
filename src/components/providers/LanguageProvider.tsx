@@ -6,7 +6,7 @@ import { getMessage, type Language } from "@/lib/i18n";
 type LanguageContextValue = {
   language: Language;
   setLanguage: (next: Language) => void;
-  t: (path: string) => string;
+  t: (path: string) => any;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);

@@ -4,7 +4,7 @@ import { PricingTable } from "@/components/sections/PricingTable";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Setup gratis, subscription Rp50.000.000/tahun, dan maintenance Rp2.500.000/bulan."
+  description: "Pilih paket yang sesuai untuk bisnis Anda. Dari free tier hingga enterprise solution dengan fitur lengkap."
 };
 
 export default function PricingPage() {
@@ -12,8 +12,8 @@ export default function PricingPage() {
     <>
       <PricingTable />
       <CTASection
-        title="Integrate your bussines with Aegis AI"
-        description="With just one click. Aegis can run your bussines."
+        title="Siap Membangun Sistem Akuisisi Klien yang Predictable?"
+        description="Konsultasikan kebutuhan bisnis Anda. Kami akan bantu rancang infrastruktur yang tepat."
       />
     </>
   );

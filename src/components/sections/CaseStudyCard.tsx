@@ -1,11 +1,16 @@
+"use client";
+
 import { CaseStudy } from "@/types";
 import { Card } from "@/components/ui/Card";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 type CaseStudyCardProps = {
   study: CaseStudy;
 };
 
 export function CaseStudyCard({ study }: CaseStudyCardProps) {
+  const { t } = useLanguage();
+
   return (
     <Card className="h-full">
       <p className="text-xs uppercase tracking-[0.2em] text-aegis-glow">{study.industry}</p>
@@ -14,7 +19,7 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
 
       <div className="mt-6 space-y-5 text-sm text-slate-200">
         <div>
-          <p className="font-semibold text-white">Timeline Alur AI</p>
+          <p className="font-semibold text-white">{t("caseStudyCard.timeline")}</p>
           <div className="mt-3 space-y-3">
             {study.workflowTimeline.map((item) => (
               <div key={item.phase} className="rounded-xl border border-white/10 bg-white/[0.03] p-3.5">
@@ -33,7 +38,7 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
         </div>
 
         <div>
-          <p className="font-semibold text-white">Problem</p>
+          <p className="font-semibold text-white">{t("caseStudyCard.problem")}</p>
           <ul className="mt-2 space-y-1.5">
             {study.problem.map((item) => (
               <li key={item}>• {item}</li>
@@ -42,7 +47,7 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
         </div>
 
         <div>
-          <p className="font-semibold text-white">Implementation</p>
+          <p className="font-semibold text-white">{t("caseStudyCard.implementation")}</p>
           <ul className="mt-2 space-y-1.5">
             {study.implementation.map((item) => (
               <li key={item}>• {item}</li>
@@ -51,7 +56,7 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
         </div>
 
         <div>
-          <p className="font-semibold text-white">Results</p>
+          <p className="font-semibold text-white">{t("caseStudyCard.results")}</p>
           <ul className="mt-2 space-y-1.5">
             {study.metrics.map((metric) => (
               <li key={metric}>• {metric}</li>
@@ -60,7 +65,7 @@ export function CaseStudyCard({ study }: CaseStudyCardProps) {
         </div>
 
         <p className="border-t border-white/10 pt-4 text-aegis-glow">
-          <span className="font-semibold">Insight:</span> {study.insight}
+          <span className="font-semibold">{t("caseStudyCard.insight")}:</span> {study.insight}
         </p>
       </div>
     </Card>

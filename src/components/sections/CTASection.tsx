@@ -19,9 +19,9 @@ export function CTASection({
   const { language } = useLanguage();
   const defaults = {
     id: {
-      title: "Stop Chasing Clients. Build a System That Finds Them.",
-      description: "30-minute executive session. No obligation.",
-      buttonLabel: "Book a Strategic Consultation"
+      title: "Stop Mengejar Klien. Bangun Sistem yang Datangkan Mereka.",
+      description: "Sesi strategis 30 menit. Tanpa kewajiban.",
+      buttonLabel: "Book Strategic Consultation"
     },
     en: {
       title: "Stop Chasing Clients. Build a System That Finds Them.",

@@ -1,25 +1,25 @@
-import type { Metadata } from "next";
-import { caseStudies } from "@/lib/constants";
+"use client";
+
+import { constantsByLanguage } from "@/lib/i18n-constants";
 import { Container } from "@/components/layout/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard";
-
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description: "Empat studi kasus implementasi Aegis AI pada agency, konsultan, interior, dan klinik estetika."
-};
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export default function CaseStudiesPage() {
+  const { language, t } = useLanguage();
+  const constants = constantsByLanguage[language];
+
   return (
     <>
       <section className="section-spacing pt-16">
         <Container>
-          <h1 className="text-4xl font-bold text-white">Industry Case Studies</h1>
+          <h1 className="text-4xl font-bold text-white">{t("caseStudiesPage.title")}</h1>
           <p className="mt-3 max-w-2xl text-slate-300">
-            Setiap studi kasus mencakup problem, implementasi, hasil, dan insight agar bisa direplikasi pada konteks bisnis Anda.
+            {t("caseStudiesPage.description")}
           </p>
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
-            {caseStudies.map((study) => (
+            {constants.caseStudies.map((study) => (
               <CaseStudyCard key={study.id} study={study} />
             ))}
           </div>
